@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node server.js | bunyan -o short",
     "test": "STATUS=0; tap test/**/*.test.js || STATUS=$?; standard || STATUS=$?; exit $STATUS",
-    "test:watch": "nodemon -q -x 'npm test'"
+    "test:watch": "nodemon -q -x 'npm test'",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "engines": {
     "node": ">= 6.0.0"
@@ -27,7 +29,8 @@
     "express": "^4.13.4",
     "glob": "^7.0.3",
     "lru-cache": "^4.0.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "eventsource": "^0.2.1",
@@ -39,5 +42,6 @@
     "standard": "^12.0.1",
     "supertest": "^3.4.2",
     "tap": "^14.10.7"
-  }
+  },
+  "snyk": true
 }
